@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 
 function TicTacToe(props) {
-  // Declare state variables for the game board, current player, and winner message
   const [board, setBoard] = useState(['', '', '', '', '', '', '', '', '']);
   const [currentPlayer, setCurrentPlayer] = useState(props.symbol);
-  const [winner, setWinner] = useState(''); // Declare a state variable for the winner message
-  const [gameover, setGameover] = useState(false); // fix the spelling error in the variable name
+  const [winner, setWinner] = useState('');
+  const [gameover, setGameover] = useState(false);
 
-  // Function to check if the current player has won the game
   const checkWinner = (table) => {
     const WINCHANCES = [    [0,1,2],
       [3,4,5],
@@ -23,28 +21,28 @@ function TicTacToe(props) {
       const [a,b,c] = WINCHANCES[i];
       
       if (table[a] && table[a] === table[b] && table[b] === table[c]){
-        setGameover(true); // fix the spelling error in the function name and set gameover to true if a winner is found
+        setGameover(true);
         return table[a];
       }
     }
   }
   
   const handleClick = (index) => {
-    // Check if the current player has won the game
+
     const winner = checkWinner(board);
     if (winner) {
-      setWinner(winner); // Update the winner with the current player's name
-      setGameover(true); // fix the spelling error in the function name and Set the gameOver flag to true
+      setWinner(winner); 
+      setGameover(true); 
       return;
     }
-  
+    
     // Only allow a move if the space is not already occupied and the game is not over
     if (board[index] === '' && !gameover) { // check if game is over before allowing a move
       // Make a copy of the board to update
       const newBoard = [...board];
       newBoard[index] = currentPlayer;
       setBoard(newBoard);
-  
+    
       // Switch to the other player
       setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
     }  
@@ -54,20 +52,21 @@ function TicTacToe(props) {
   const resetGame = () => {
     setBoard(['', '', '', '', '', '', '', '', '']);
     setCurrentPlayer(props.symbol);
-    setWinner(''); // Reset the winner message
-    setGameover(false); // fix the spelling error in the function name and Reset the gameOver flag
+    setWinner(''); 
+    setGameover(false); 
   }
 
-
   return (
-    <Container className="" id="root">
+    <Container id="root">
       <div className="col-7 mt-5 p-5" id="menu-container">
         <h2 id="white-text">Tic Tac Toe in React.js</h2>
-        {winner ? (
-          <h4 className="pb-5" id="white-text">{winner} wins!</h4>
-      ) : (
-        <h4 className="" id="white-text">It is {currentPlayer} turn!</h4>
-      )}
+        <h4
+  className="pb-2 pt-3"
+  id="white-text"
+  style={{ color: winner ? '#456f53' : 'white' }}
+>
+  {winner ? (winner + ' wins!') : 'It is ' + currentPlayer + ' turn!'}
+</h4>
       <Button className="btn-sm mb-2" variant="secondary" onClick={resetGame}>Start Over</Button>
       <Row>
         <Col gutter={0}>

@@ -5,17 +5,8 @@ import TicTacToe from './game.jsx';
 import ReactDOM from 'react-dom';
 
 function Home(props) {
-  const renderNewPage = (symbol) => {
-    console.log({symbol});
-    console.log(props.rootElement);
-    ReactDOM.render(
-      <Suspense fallback={<div>Loading...</div>}>
-        <TicTacToe symbol={symbol} />
-      </Suspense>,
-      props.rootElement
-    );
-  };
-  
+ 
+
   return (
     <div className="col-5 mt-5 pb-5 pt-4" id="menu-container">
       <h2 id="white-text">Tic Tac Toe in React.js</h2>
