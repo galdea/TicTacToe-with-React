@@ -36,19 +36,15 @@ function TicTacToe(props) {
       return;
     }
     
-    // Only allow a move if the space is not already occupied and the game is not over
-    if (board[index] === '' && !gameover) { // check if game is over before allowing a move
-      // Make a copy of the board to update
+    if (board[index] === '' && !gameover) { 
       const newBoard = [...board];
       newBoard[index] = currentPlayer;
       setBoard(newBoard);
     
-      // Switch to the other player
       setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
     }  
   }
   
-  // Function to reset the game board, current player, and gameOver flag
   const resetGame = () => {
     setBoard(['', '', '', '', '', '', '', '', '']);
     setCurrentPlayer(props.symbol);
