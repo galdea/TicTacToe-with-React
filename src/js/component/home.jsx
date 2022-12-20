@@ -16,6 +16,7 @@ function Home() {
       document.getElementById('root')
     );
   };
+  
 		
   return (
     <div className="col-5 mt-5 pb-5 pt-4" id="menu-container">
@@ -29,12 +30,38 @@ function Home() {
             <Form.Control type="text" placeholder="Player2 username" id="form-control2" />
           </div>
         </Form.Group >
-        <Button className="btn btn-sm mx-1 mt-2" type="submit" id="buttonX" onClick={() => renderNewPage("X")}>
-          X
-        </Button>
-        <Button className="mx-1 mt-2" type="submit" id="buttonY" onClick={() => renderNewPage("O")}>
-          O
-        </Button>
+ <Button
+  className="btn btn-sm mx-1 mt-2"
+  type="button"
+  id="buttonX"
+  onClick={(event) => {
+    ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <TicTacToe symbol="X" />
+      </Suspense>,
+      document.getElementById('root')
+    );
+  }}
+>
+  X
+</Button>
+<Button
+  className="mx-1 mt-2"
+  type=""
+  id="buttonY"
+  onClick={(event) => {
+    ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <TicTacToe symbol="O" />
+      </Suspense>,
+      document.getElementById('root')
+    );
+  }}
+>
+  O
+</Button>
+
+
       </Form>
     </div>
   );
