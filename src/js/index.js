@@ -10,3 +10,11 @@ import Home from "./component/home.jsx";
 
 //render your react application
 ReactDOM.render(<Home />, document.querySelector("#app"));
+const renderNewPage = (symbol) => {
+    console.log({symbol})
+    console.log(document.getElementById('root'))
+    ReactDOM.render(
+        <TicTacToe symbol={symbol} />,
+      document.getElementById('root')
+    );
+  };
