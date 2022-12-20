@@ -4,7 +4,7 @@ body {
 
 #menu-container {
     text-align: center;
-    background-color: #5d5853;
+    background-color: #5b5652;
 margin: auto;  
 }
   
@@ -54,4 +54,16 @@ margin-right: auto;
 
   #buttonX:focus, #buttonY:focus {
     background-color: #56514b;
+  }
+
+  #grid {
+    text-align: center;
+    line-height: 10px;    
+   font-size: 70px;
+   font-weight: bolder;
+    background-color: #5b5652;
+    color: #636060; 
+    border: 1px #646160 solid;
+    height: 125px;
+    width: 125px;
   }
