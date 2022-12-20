@@ -1,23 +1,21 @@
 import React from 'react';
 import { Form, Button, Col } from "react-bootstrap";
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
+import TicTacToe from './game.jsx';
 import ReactDOM from 'react-dom';
 
-const TicTacToe = lazy(() => import('./game.jsx'));
-
-function Home() {
+function Home(props) {
   const renderNewPage = (symbol) => {
-    console.log({symbol})
-    console.log(document.getElementById('root'))
+    console.log({symbol});
+    console.log(props.rootElement);
     ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
         <TicTacToe symbol={symbol} />
       </Suspense>,
-      document.getElementById('root')
+      props.rootElement
     );
   };
   
-		
   return (
     <div className="col-5 mt-5 pb-5 pt-4" id="menu-container">
       <h2 id="white-text">Tic Tac Toe in React.js</h2>
@@ -39,7 +37,7 @@ function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         <TicTacToe symbol="X" />
       </Suspense>,
-      document.getElementById('root')
+      props.rootElement
     );
   }}
 >
@@ -54,7 +52,7 @@ function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         <TicTacToe symbol="O" />
       </Suspense>,
-      document.getElementById('root')
+      props.rootElement
     );
   }}
 >
@@ -66,5 +64,6 @@ function Home() {
     </div>
   );
 }
+
   
 export default Home;
